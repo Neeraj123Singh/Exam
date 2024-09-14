@@ -5,7 +5,7 @@ Copy example.env to .env and fill environment values required
 - docker-compose up --build
 
 # For Postmans Collection Use
--Exam.postman_collection.json file in root folder and m,ake sure to change baseUrl and Add Authrization header to all answers routes
+-Exam.postman_collection.json file in root folder and make sure to change baseUrl and Add Authrization header to all answers routes
 
 # IF Migration Does not run Automatically Due to System Configuration 
 - run them using new Command Propt and command : 
