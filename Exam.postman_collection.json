@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "69684fa4-e6e9-45e6-a452-18ee2f2d4a9f",
+		"name": "Exam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34950279"
+	},
+	"item": [
+		{
+			"name": "Create MCQ Questions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"MCQ\",\n  \"question\": \"What is the capital of France?\",\n  \"options\": [\"Paris\", \"London\", \"Berlin\", \"Rome\"],\n  \"answer\": \"Paris\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"question"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:3000/question' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"type\": \"MCQ\",\n  \"question\": \"What is the capital of France?\",\n  \"options\": [\"Paris\", \"London\", \"Berlin\", \"Rome\"],\n  \"answer\": \"Paris\"\n}'\n[21:32, 14/9/2024] Mota Bhai: "
+			},
+			"response": []
+		},
+		{
+			"name": "Create ANSWERS",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"questionId\": 1,\n  \"answerText\": \"Sample answer text\",\n  \"answerImageUrl\": \"http://example.com/image.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/answers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"answers"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/answers \\\n-H \"Content-Type: application/json\" \\\n-d '{\n  \"questionId\": 1,\n  \"answerText\": \"Sample answer text\",\n  \"answerImageUrl\": \"http://example.com/image.jpg\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question With Image Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type",
+							"value": "Descriptive",
+							"type": "text"
+						},
+						{
+							"key": "question",
+							"value": "Describe the water cycle.",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/path/to/your/image.png"
+						},
+						{
+							"key": "answer",
+							"value": "The water cycle involves processes such as evaporation, condensation, and precipitation.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"question"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/question \\\n-H \"Content-Type: application/json\" \\\n-F \"type=Descriptive\" \\\n-F \"question=Describe the water cycle.\" \\\n-F \"image=@/path/to/your/image.png\" \\\n-F \"answer=The water cycle involves processes such as evaporation, condensation, and precipitation.\""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Answer By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/answers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"answers",
+						"2"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/answers/1\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Answer With Image Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "questionId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "answerText",
+							"value": "Sample Answer Text",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/path/to/your/image.png"
+						},
+						{
+							"key": "answer",
+							"value": "The water cycle involves processes such as evaporation, condensation, and precipitation.",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/answers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"answers"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/question \\\n-H \"Content-Type: application/json\" \\\n-F \"type=Descriptive\" \\\n-F \"question=Describe the water cycle.\" \\\n-F \"image=@/path/to/your/image.png\" \\\n-F \"answer=The water cycle involves processes such as evaporation, condensation, and precipitation.\""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Answer With Image Upload Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "questionId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "answerText",
+							"value": "Sample Answer Text 34",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/avinashsingh/Downloads/download.png"
+						},
+						{
+							"key": "answer",
+							"value": "The water cycle involves processes such as evaporation, condensation, and precipitation.",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/answers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"answers",
+						"2"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/question \\\n-H \"Content-Type: application/json\" \\\n-F \"type=Descriptive\" \\\n-F \"question=Describe the water cycle.\" \\\n-F \"image=@/path/to/your/image.png\" \\\n-F \"answer=The water cycle involves processes such as evaporation, condensation, and precipitation.\""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Answer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/answers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"answers",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE http://localhost:3000/answers/1\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Exam",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/exam",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"exam"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/exam"
+			},
+			"response": []
+		},
+		{
+			"name": "get All Answers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/answers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"answers"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/answers\n"
+			},
+			"response": []
+		}
+	]
+}
