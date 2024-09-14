@@ -41,40 +41,6 @@
 			"response": []
 		},
 		{
-			"name": "Create ANSWERS",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"questionId\": 1,\n  \"answerText\": \"Sample answer text\",\n  \"answerImageUrl\": \"http://example.com/image.jpg\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/answers",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"answers"
-					]
-				},
-				"description": "Generated from cURL: curl -X POST http://localhost:3000/answers \\\n-H \"Content-Type: application/json\" \\\n-d '{\n  \"questionId\": 1,\n  \"answerText\": \"Sample answer text\",\n  \"answerImageUrl\": \"http://example.com/image.jpg\"\n}'\n"
-			},
-			"response": []
-		},
-		{
 			"name": "Create Question With Image Upload",
 			"request": {
 				"method": "POST",
@@ -137,6 +103,41 @@
 					]
 				},
 				"description": "Generated from cURL: curl -X GET http://localhost:3000/answers/1\n"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"email\": \"user@example.com\",\n        \"password\": \"securePassword\"\n      }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/auth/login \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n        \"email\": \"user@example.com\",\n        \"password\": \"securePassword\"\n      }'\n"
 			},
 			"response": []
 		},
@@ -238,9 +239,15 @@
 			"name": "Delete Answer",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2MzM3Mzk0LCJleHAiOjE3MjYzNDA5OTR9.v2nmGac6sWBy5C50u5EsOeDY1ktkw8jvq5PHbmuCfyM",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:3000/answers/1",
+					"raw": "http://localhost:3000/answers/13",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -248,7 +255,7 @@
 					"port": "3000",
 					"path": [
 						"answers",
-						"1"
+						"13"
 					]
 				},
 				"description": "Generated from cURL: curl -X DELETE http://localhost:3000/answers/1\n"
@@ -279,9 +286,15 @@
 			"name": "get All Answers",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2MzM3Mzk0LCJleHAiOjE3MjYzNDA5OTR9.v2nmGac6sWBy5C50u5EsOeDY1ktkw8jvq5PHbmuCfyM",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:3000/answers",
+					"raw": "http://localhost:3000/answers?page=1&limit=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -289,9 +302,54 @@
 					"port": "3000",
 					"path": [
 						"answers"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
 					]
 				},
 				"description": "Generated from cURL: curl -X GET http://localhost:3000/answers\n"
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"username\": \"exampleUser\",\n        \"email\": \"user@example.com\",\n        \"password\": \"securePassword\"\n      }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/auth/signup \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n        \"username\": \"exampleUser\",\n        \"email\": \"user@example.com\",\n        \"password\": \"securePassword\"\n      }'\n"
 			},
 			"response": []
 		}

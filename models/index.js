@@ -27,6 +27,7 @@ const db = {
  sequelize,
  Question: require('./question')(sequelize, Sequelize.DataTypes),
  Answer: require('./answer')(sequelize, Sequelize.DataTypes),
+ User: require('./user')(sequelize, Sequelize.DataTypes),
  // add other models here
 };
 

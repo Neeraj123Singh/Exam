@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const questionRoutes = require('./routes/questionRoutes');
 const examRoutes = require('./routes/examRoutes');
 const answerRoutes = require('./routes/answerRoutes');
+const authRoutes = require('./routes/authRoutes');
 const { sequelize } = require('./models');
 
 // Initialize Express app
@@ -13,6 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Routes
+app.use('/auth', authRoutes);
 app.use('/question', questionRoutes);
 app.use('/exam', examRoutes);
 app.use('/answers', answerRoutes); 
